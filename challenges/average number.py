@@ -6,5 +6,5 @@
 # 3. Pokaz równiez typ tej sredniej z funkcja type
 
 averageNumber = (1 + 2 + 3 + 4)/4
-print(averageNumber)
-print(type(averageNumber))
+print("Srednia z liczb:" , averageNumber)
+print("Typ" , type(averageNumber))

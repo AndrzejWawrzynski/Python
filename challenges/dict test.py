@@ -19,11 +19,10 @@ config = {
     "dbPassword" : "12345"
 }
 
-print(len(config))
+print("Ilosc elementow slownika:", len(config))
 
 print(config["dbType"])
 
 for i, n in config.items():
-    print("Klucz w config: " + i + " z wartoscia " + n)
+    print("Klucz w config: " + i + " z wartoscia: " + n)
 
-    

@@ -7,7 +7,7 @@
 #    i wyswietl wynik w konsoli
 
 sum = 0
-for i in range(200):
+for i in range(201):
         sum += i
 print(sum)
 

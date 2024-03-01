@@ -39,3 +39,9 @@ max = data[2]
 print("Srednia temperatura to : " + str(avg) + "\xB0 C")
 print("Minimalna temperatura to : " + str(min) + "\xB0 C")
 print("Malsymalna temperatura to : " + str(max) + "\xB0 C")
+
+
+avgTemp, minTemp, maxTemp = data
+print ("avgTemp:", avgTemp)
+print ("minTemp:", minTemp)
+print ("maxTemp:", maxTemp)

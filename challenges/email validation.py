@@ -16,10 +16,10 @@
 
 def validateEmail(email):
     monkeyIndex = email.find("@")
-    if monkeyIndex < 0: return False
+    if monkeyIndex <= 0: return False
 
     dotIndex = email.find(".")
-    if dotIndex == -1: return False
+    if dotIndex <= 0: return False
     if dotIndex < monkeyIndex: return False
 
     return True

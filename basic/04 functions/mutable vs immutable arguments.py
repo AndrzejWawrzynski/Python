@@ -1,4 +1,4 @@
-# immutable: int, float, bool, str, frozenset
+# immutable: int, float, bool, str, frozenset, tuple
 
 
 def modifyStr(strData):

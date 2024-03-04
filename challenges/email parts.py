@@ -40,3 +40,7 @@ def getEmailParts(email):
 
 
 print(getEmailParts("ola@domena.com"))
+print(getEmailParts(".ola@domena.com"))
+print(getEmailParts("ola@domenacom"))
+print(getEmailParts("oladomena.com"))
+print(getEmailParts("@oladomena.com"))

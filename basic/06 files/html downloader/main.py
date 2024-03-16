@@ -2,6 +2,7 @@ import os, sys
 import urllib.parse
 import validators
 import requests
+from datetime import datetime
 
 print("Number of arguments: ", len(sys.argv))
 print("Arguments list :", sys.argv)
@@ -29,7 +30,15 @@ else:
     print("Url :", url, "is invalid")
     raise Exception("Bad URL!")
 
-response = requests.get(url, allow_redirects=True)
+response = requests.get(url, allow_redirects = True)
 if response.ok == True:
     print("Response ok from server from url :", url)
+    now = datetime.now()
+    dateString = now.strftime("%d.%m.%Y %H.%M.%S")
+    print(dateString)
+    fileName = "./websites/" + paresdUrl.netloc + " " + dateString + ".html"
+    print(fileName)
+    fh = open(fileName, "wb")
+    fh.write(response.content)
+    fh.close()
 

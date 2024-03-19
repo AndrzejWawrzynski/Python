@@ -1,16 +1,18 @@
 import requests
 import html
+from deep_translator import GoogleTranslator
 
 
 class Question:
     def __init__(self, category, questionStr, correctAnswerFlag) -> None:
         self.category = category
+        questionStr = GoogleTranslator(source='auto', target=language).translate(questionStr)
         self.questionStr = questionStr
         self.correctAnswerFlag = correctAnswerFlag
 
 class Quiz:
     def __init__(self, numQuestion):
-        self.apiUrl = "https://opentdb.com/api.php?difficulty=easy&type=boolean&amount="
+        self.apiUrl = "https://opentdb.com/api.php?difficulty="+d+"&type=boolean&amount="
         self.numquestion = numQuestion
         self.questionList = []
         self.loadQuestions(numQuestion)
@@ -37,6 +39,7 @@ class Quiz:
                 # print(question)
                 qObj = Question(category, questionStr, correctAnswerFlag)
                 self.questionList.append(qObj)
+                  
 
     def stratQuiz(self):
         print("\nWelcome in Quiz!")
@@ -46,7 +49,7 @@ class Quiz:
 
         while (n < numQuestions):
             q = self.questionList[n]
-            print("Question number " + str(n) + " :" , q.questionStr)
+            print("Question number " + str(n+1) + " :" , q.questionStr)
             #print("Answer Flag: ", q.correctAnswerFlag)
             anwer = input("Give correct answer as y/n:")
             answerBool = False
@@ -62,5 +65,7 @@ class Quiz:
         print("Number of correct aswers: ", numCorrectUserAnswers, 
               " from ", len(self.questionList), " questions")
 
+d = "easy"
+language = "pl"
 quiz = Quiz(10)
 quiz.stratQuiz()

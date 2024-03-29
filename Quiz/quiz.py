@@ -1,20 +1,21 @@
 import requests
 import html
 from deep_translator import GoogleTranslator
-from main import language, level
 
-class Question:
+qL = []
+class Quiz:
     def __init__(self, category, questionStr, correctAnswerFlag) -> None:
         self.category = category
         questionStr = GoogleTranslator(source='auto', target=language).translate(questionStr)
         self.questionStr = questionStr
         self.correctAnswerFlag = correctAnswerFlag
 
-class Quiz:
     def __init__(self, numQuestion):
-        self.apiUrl = "https://opentdb.com/api.php?difficulty="+level+"&type=boolean&amount="
+        global qL
+        self.apiUrl = "https://opentdb.com/api.php?difficulty=Easy&type=boolean&amount="
         self.numquestion = numQuestion
         self.questionList = []
+        qL = self.questionList
         self.loadQuestions(numQuestion)
 
     def loadQuestions(self, numQuestion):
@@ -42,29 +43,34 @@ class Quiz:
                   
 
     def stratQuiz(self):
-        print("\nWelcome in Quiz!")
+        #print("\nWelcome in Quiz!")
         numCorrectUserAnswers = 0
         n = 0
         numQuestions = len(self.questionList)
 
         while (n < numQuestions):
             q = self.questionList[n]
-            print("Question number " + str(n+1) + " :" , q.questionStr)
+            #print("Question number " + str(n+1) + " :" , q.questionStr)
             #print("Answer Flag: ", q.correctAnswerFlag)
             anwer = input("Give correct answer as y/n:")
             answerBool = False
             if anwer =="y": answerBool = True
             
             if answerBool == q.correctAnswerFlag:
-                print("Correct!")
+                #print("Correct!")
                 numCorrectUserAnswers += 1
             else:
-                print("Not correct!")
-            n +=1
+                #print("Not correct!")
+                n +=1
         
-        print("Number of correct aswers: ", numCorrectUserAnswers, 
-              " from ", len(self.questionList), " questions")
+        #print("Number of correct aswers: ", numCorrectUserAnswers, 
+              #" from ", len(self.questionList), " questions")
+
+level = "easy"
+language = "pl"
+quiz = Quiz(10)
 
 
-
+if __name__ == "__main__":
+    quiz.stratQuiz()
 
